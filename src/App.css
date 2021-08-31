@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.message{
+  text-align:center;
+  color:teal;
+}
+
+.message_text{
+  padding-left:20px;
+  color:red;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
