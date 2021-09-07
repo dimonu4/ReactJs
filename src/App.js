@@ -1,27 +1,45 @@
-// import logo from './logo.svg';
+import React,{useEffect, useState} from 'react'
 import './App.css';
-import Message from './Message';
-
-const messageText= 'Hello from app.js'
+import Message from './components/Message';
 
 function App() {
+  const [messageList,setMessageList] = useState( [] );
+  const [value,setValue] = useState('');
+
+  
+  const handleAddMessage=(event)=>{
+    event.preventDefault();
+    if(value){
+      setMessageList((prevMessage)=>[
+        ...prevMessage,
+        {text:`${value}`,author:'Human'}
+      ])
+    }
+    
+  }
+
+  const handleChange=(e)=>{
+    setValue(e.target.value);
+  }
+
+  useEffect(()=>{
+    if(messageList[messageList.length-1]?.author==='Human'){
+    setTimeout(()=>{
+      setMessageList((prevMessage)=>[
+        ...prevMessage,
+        {text:'Hi', author:'Bot'}
+      ])
+      },1000)
+    }
+  },[messageList])
+  
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <Message text={messageText}/>
+      <form onSubmit={handleAddMessage}>
+        <input className="input" value={value} onChange={handleChange} placeHolder="Hello"></input>
+        <input className="submit" type="submit" value= "Send"></input>
+      </form>
+      {messageList.map((message,i)=><Message key={i} text={message} />)}
     </div>
   );
 }
