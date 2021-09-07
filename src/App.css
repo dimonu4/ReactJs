@@ -2,6 +2,30 @@
   text-align: center;
 }
 
+.message{
+  text-align:center;
+  color:teal;
+}
+
+.message_text{
+  padding:10px;
+  color:red;
+}
+
+.input{
+  margin-top:100px;
+  padding:8px;
+  border-radius:6px;
+}
+
+.submit{
+  margin-left:10px;
+  padding:8px;
+  color:white;
+  background-color:teal;
+  border-radius:6px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
