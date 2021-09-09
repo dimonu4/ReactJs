@@ -1,5 +1,14 @@
 .App {
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin:30px auto;
+
+}
+
+.chat_list{
+  flex-direction: column;
+  margin-right:35px;
 }
 
 .message{
@@ -9,7 +18,7 @@
 
 .message_text{
   padding:10px;
-  color:red;
+  color:#af6017;
 }
 
 .input{
