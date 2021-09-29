@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-function Message({text}){
+function Message({message}){
     return (
-        <div className="message">
-            <div>New message:<span className="message_text"> {text.text}</span> from: {text.author}</div>
+        <div className="message" key={message.id}>
+            <div>New message:<span className="message_text"> {message.text}</span> from: {message.author}</div>
         </div>
     );
 }
