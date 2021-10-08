@@ -1,13 +1,18 @@
-import Reat,{useEffect, useRef, useState,useCallback} from 'react';
+import Reat,{useEffect, useRef, useState,useCallback,useContext} from 'react';
 import Form from '../Form';
 import ChatList from '../chatList';
 import { AUTHORS } from '../../utils/constant';
 import Message from '../Message';
 import {useParams,Redirect} from 'react-router-dom';
+import { Button } from '@material-ui/core';
+import {MyButton} from '../MyButton'
+import {ThemeContext} from '../../utils/ThemeContext'
 
 function Chats({ chats,setChats, messages, setMessages}){
 
-    const {chatId}=useParams();
+  const theme = useContext(ThemeContext);
+
+  const {chatId}=useParams();
 
        const sendMessage = useCallback((message)=>{
         setMessages((prevMess)=>({
@@ -69,6 +74,7 @@ function Chats({ chats,setChats, messages, setMessages}){
     //   chats.splice(i,1)
     // }
        
+    
 
     return(
     <div className="App">
@@ -76,7 +82,6 @@ function Chats({ chats,setChats, messages, setMessages}){
         <div>
           {!!chatId &&(
             <>
-             
              <Form onSumbit={handleAddMessage} />
              {messages[chatId].map((message)=>(
                <Message message={message}/>
@@ -85,6 +90,7 @@ function Chats({ chats,setChats, messages, setMessages}){
          </>
          )}
          </div>
+         <MyButton onClick={theme.changeTheme}>remove</MyButton>
          {/* <button onClick={deleteChat}>Remove chat</button> */}
     
     </div>

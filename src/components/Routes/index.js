@@ -4,6 +4,7 @@ import {AUTHORS} from '../../utils/constant'
 import Chats from '../chats'
 import Home from '../Home'
 import NoChat from '../NoChat'
+import {Profile} from '../Profile'
 
 const initialMessages= {
     "chat-1":[
@@ -34,6 +35,9 @@ export const Routes= ()=>{
         <BrowserRouter>
                 <header>
           <ul>
+              <li>
+                  <Link to = "/profile">Profile</Link>
+              </li>
             <li>
               <Link to='/'>Home</Link>
             </li>
@@ -46,7 +50,9 @@ export const Routes= ()=>{
             <Route path="/" exact>
                 <Home/>
             </Route>
-            
+            <Route path="/profile">
+                <Profile />
+            </Route>
             <Route path="/chats/:chatId?">
                 <Chats chats={chats} setChats={setChats} messages={messages} setMessages={setMessages}/>
             </Route>

@@ -6,6 +6,14 @@
 
 }
 
+.button-light{
+  background-color:#61dafb;
+}
+
+.button-dark{
+  background-color:rgb(31, 60, 61);
+}
+
 .chat_list{
   flex-direction: column;
   margin-right:35px;
