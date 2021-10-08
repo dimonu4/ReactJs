@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+import React,{useEffect, useRef, useState, useCallback} from 'react'
 import './App.css';
+import { ThemeProvider,useTheme,createMuiTheme } from '@material-ui/core/styles';
+import {Routes} from './components/Routes';
+import {ThemeContext} from './utils/ThemeContext'
+import { Provider } from 'react-redux';
+import { store } from './store';
+
+// const theme= createMuiTheme({
+//   palette:{
+//       primary:{
+//           main:"#17af89",
+//       },
+//       secondary:{
+//           main:"#af6017",
+//       },
+//   },
+// });
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  const [theme,setTheme] = useState('light');
+  const changeTheme = useCallback( () => {
+    setTheme( (prevTheme) => (prevTheme === 'light'? 'dark': 'light') )
+  },[])
+
+  return  (
+    // <ThemeProvider theme={theme}>
+    <Provider store={store}>
+    <ThemeContext.Provider value={ {theme, changeTheme} }>
+    <Routes/>
+    </ThemeContext.Provider>
+    </Provider>
+    // </ThemeProvider>
   );
 }
 
